@@ -2,16 +2,54 @@ var inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 
-const readFileAsync = util.promisify(fs.readFile);
+
 const writeFileAsync = util.promisify(fs.writeFile);
 
 
 
- function readmeReturn(){
+ function readmeOutput(answers){
+
+    const title = answers.title;
+    const description = answers.description;
+    const installation = answers.installation;
+    const usage = answers.usage;
+    const credits = answers.credits;
+    const license = answers.license;
+
+
+    return `
+    
+    # Title
+    ${title}
+
+    ## Description
+    ${description}
+
+    ## Table of content
+
+        * [Installation](#installation)
+        * [Usage](#usage)
+        * [Credits](#credits)
+        * [License](#license)
+
+
+    ## Installation
+    ${installation}
 
 
 
-    return ' # Title    ## Description     ## Table of content';
+    ## Usage 
+    ${usage}
+
+
+
+    ## Credits
+    ${credits}
+
+
+    ## License
+    ${license}
+    `;
 
 
 
@@ -43,31 +81,23 @@ inquirer
         message: "Usage Information?"
         
       
+    },{
+        name: "credits",
+        message: "credits?"
+        
+      
     },
     {
-        name: "test",
-        message: "Test?"
+        name: "license",
+        message: "license?"
         
       
     }
   ])
   .then(function(response) {
-
-    const newREDME = ''
-    
-    
-
-    const htmlname = "<h1>" + response.name + "</h1>";
-    const htmllocation = "<h2>" + response.location + "</h2>";
-    const htmlprofile = "<h2>" + response.linkedin + "</h2>";
-
-
-
-    fs.appendFile("index.html",htmlname + "\n"+ htmllocation +"\n" +htmlprofile, function(){
-        console.log("completed");
-
-        
-    });
-
-    
-  });
+    return readmeOutput(response);
+       
+  })
+  .then(function(readme){
+    return writeFileAsync('./ReadMEOutput.md', readme);
+});
