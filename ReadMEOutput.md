@@ -1,33 +1,29 @@
 
     
 # Title
-aldo
+Aldo project
 
 ## Description
 description
 
 ## Table of content
 
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [Credits](#credits)
-    * [License](#license)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
 
 
 ## Installation
-instructions
-
-
+installation
 
 ## Usage 
  usage
 
-
-
 ## Credits
-credits
+aldo
 
 
 ## License
 all
-    
+

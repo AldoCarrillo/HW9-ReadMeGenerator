@@ -6,7 +6,6 @@ const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 
 
-
  function readmeOutput(answers){
 
     const title = answers.title;
@@ -15,7 +14,6 @@ const writeFileAsync = util.promisify(fs.writeFile);
     const usage = answers.usage;
     const credits = answers.credits;
     const license = answers.license;
-
 
     return `
     
@@ -27,21 +25,17 @@ ${description}
 
 ## Table of content
 
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [Credits](#credits)
-    * [License](#license)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
 
 
 ## Installation
 ${installation}
 
-
-
 ## Usage 
  ${usage}
-
-
 
 ## Credits
 ${credits}
@@ -49,13 +43,10 @@ ${credits}
 
 ## License
 ${license}
-    `;
 
-
-
+`;
 
 }
-
 
 
 inquirer
