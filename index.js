@@ -19,36 +19,36 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
     return `
     
-    # Title
-    ${title}
+# Title
+${title}
 
-    ## Description
-    ${description}
+## Description
+${description}
 
-    ## Table of content
+## Table of content
 
-        * [Installation](#installation)
-        * [Usage](#usage)
-        * [Credits](#credits)
-        * [License](#license)
-
-
-    ## Installation
-    ${installation}
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [Credits](#credits)
+    * [License](#license)
 
 
-
-    ## Usage 
-    ${usage}
+## Installation
+${installation}
 
 
 
-    ## Credits
-    ${credits}
+## Usage 
+ ${usage}
 
 
-    ## License
-    ${license}
+
+## Credits
+${credits}
+
+
+## License
+${license}
     `;
 
 

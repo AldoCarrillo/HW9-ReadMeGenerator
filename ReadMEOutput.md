@@ -1,33 +1,33 @@
 
     
-    # Title
-    aldo
+# Title
+aldo
 
-    ## Description
-    carrillo
+## Description
+description
 
-    ## Table of content
+## Table of content
 
-        * [Installation](#installation)
-        * [Usage](#usage)
-        * [Credits](#credits)
-        * [License](#license)
-
-
-    ## Installation
-    installation
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [Credits](#credits)
+    * [License](#license)
 
 
-
-    ## Usage 
-    usage
+## Installation
+instructions
 
 
 
-    ## Credits
-    aldo carrillo
+## Usage 
+ usage
 
 
-    ## License
-    all
+
+## Credits
+credits
+
+
+## License
+all
     
