@@ -6,24 +6,27 @@ const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 
 
- function readmeOutput(answers){
+function readmeOutput(answers,lincenseText){
 
     const title = answers.title;
     const description = answers.description;
     const installation = answers.installation;
     const usage = answers.usage;
     const credits = answers.credits;
+    const test = answers.test;
+    const email = answers.email;
+    const username = answers.username;
     const license = answers.license;
+    const text = lincenseText;
 
     return `
     
-# Title
-${title}
+# ${title}       ${license}
 
 ## Description
 ${description}
 
-## Table of content
+## Table of contents
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -37,12 +40,21 @@ ${installation}
 ## Usage 
  ${usage}
 
+## Test
+${test} 
+
 ## Credits
 ${credits}
 
 
+
 ## License
-${license}
+${text}
+
+## Questiones
+
+* GitHub link: https://github.com/${username}
+* Email: ${email}
 
 `;
 
@@ -54,7 +66,6 @@ inquirer
     {
         name: "title",
         message: "Title of the README?"
-        
     },
     {
         name: "description",
@@ -65,30 +76,61 @@ inquirer
         name: "installation",
         message: "Installation Instructions?"
         
-      
     },
     {
         name: "usage",
         message: "Usage Information?"
         
-      
-    },{
+    },
+    {
         name: "credits",
-        message: "credits?"
+        message: "Credits for: "
         
-      
+    },
+    {
+        name: "test",
+        message: "Write here instruction for a Test: "
+        
     },
     {
         name: "license",
-        message: "license?"
+        message: "What type of License? 1)MIT 2)BDS 3)GPL"
         
-      
+    },
+    {
+        name: "name",
+        message: "Your Name:"
+        
+    },
+    {
+        name: "year",
+        message: "What Year:"
+
+    },
+    {
+        name: "email",
+        message: "For Questiones enter your Email:"
+        
+    },
+    {
+        name: "username",
+        message: "For Questiones enter your  GitHub Username:"
+        
     }
   ])
   .then(function(response) {
-    return readmeOutput(response);
+
+    var license = require("./licenses.js");
+    var licenseText = license.getLicenseText(response.license,response.name,response.year);
+
+    response.license = license.getLicenseBadge(response.license);
+   
+    return readmeOutput(response,licenseText);
        
   })
   .then(function(readme){
     return writeFileAsync('./ReadMEOutput.md', readme);
+})
+.then(function () {
+    console.log(' \n ****README Generated!****');
 });
